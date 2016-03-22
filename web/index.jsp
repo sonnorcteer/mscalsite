@@ -11,6 +11,8 @@
 <sql:query var="catdrop" dataSource="jdbc/CalTest">
     SELECT DISTINCT cat FROM event_set
 </sql:query>
+    
+    
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
