@@ -30,7 +30,7 @@ import net.fortuna.ical4j.model.property.Version;
 
 public class java2 {
 
- public static void main() throws IOException, ValidationException {
+ public static void main(String test) throws IOException, ValidationException {
   
   //Initilize values
   String calFile = "C:\\Users\\connor.steer\\Documents\\NetBeansProjects\\CalTest\\web\\mscal.ics";
@@ -43,7 +43,7 @@ public class java2 {
   java.util.Calendar endCal = java.util.Calendar.getInstance();
   endCal.set(2012, 04, 23, 20, 30);
   
-  String subject = "Meeting Subject";
+  String subject = test;
   String location = "Location - Mumbai";
   String description = "This goes in decription section of the metting like agenda etc.";
   

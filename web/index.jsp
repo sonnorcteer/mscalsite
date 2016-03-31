@@ -9,10 +9,12 @@
     Author     : connor.steer
 --%>
 <sql:query var="catdrop" dataSource="jdbc/CalTest">
-    SELECT DISTINCT cat FROM event_set
+    SELECT DISTINCT cat FROM event_details
 </sql:query>
     
-    
+<sql:query var="session" dataSource="jdbc/CalTest">
+    SELECT DISTINCT session from event_details
+</sql:query>
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,14 +23,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>IFPWAFCAD Homepage.</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+            <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
     <h2>Welcome to <strong>IFPWAFCAD</strong>, the International Former
         Professional Wrestlers' Association for Counseling and Development!
     </h2>
-    <% java2 test = new java2(); test.main(); %>
-        
+
     <table border="0">
         <thead>
             <tr>
@@ -42,18 +43,26 @@
             </tr>
             <tr>
                 <td>
-                    <form action="mscal.ics">
+                    <form action="response.jsp">
                         <strong>Select a subject:</strong>
-                        <select name="catfor" multiple="multiple">
+                        <select name="subject_id" multiple="multiple">
                             <c:forEach var="row" items="${catdrop.rowsByIndex}">
                                 <c:forEach var="column" items="${row}">
                                     <option value="<c:out value="${column}"/>"><c:out value="${column}"/></option>
                                 </c:forEach>
                             </c:forEach>
                         </select>
-                        <input type="submit" value="submit"/>
                         
+                        <select name="session_id" multiple="multiple">
+                            <c:forEach var="row" items="${session.rowsByIndex}">
+                                <c:forEach var="column" items="${row}">
+                                    <option value="<c:out value="${column}"/>"><c:out value="${column}"/></option>
+                                </c:forEach>
+                            </c:forEach>
+                        </select>
+                        <input type="submit" value="submit" />
                     </form>
+                    
                 </td>
             </tr>
         </tbody>
